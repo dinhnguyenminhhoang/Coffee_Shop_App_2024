@@ -1,4 +1,7 @@
+import {AntDesign} from '@expo/vector-icons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import CustomIcon from 'components/CustomIcon';
+import {BlurView} from 'expo-blur';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import CartScreen from 'screens/CartScreen';
@@ -6,7 +9,6 @@ import FacoriesScreen from 'screens/FacoriesScreen';
 import HomeScreen from 'screens/HomeScreen';
 import OrderHistoryScreen from 'screens/OrderHistoryScreen';
 import {COLORS} from 'theme/theme';
-import {BlurView} from '@react-native-community/blur';
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
@@ -18,17 +20,71 @@ export default function TabNavigator() {
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBarStyle,
         tabBarBackground: () => (
-          <BlurView
-            style={StyleSheet.absoluteFill}
-            blurType="light"
-            blurAmount={10}
-          />
+          <BlurView intensity={1} style={styles.BlurViewStyle} />
         ),
       }}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Cart" component={CartScreen} />
-      <Tab.Screen name="Favorite" component={FacoriesScreen} />
-      <Tab.Screen name="History" component={OrderHistoryScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <CustomIcon
+              Type={2}
+              name="home"
+              size={25}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <CustomIcon
+              name="like1"
+              size={25}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favorite"
+        component={FacoriesScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <CustomIcon
+              name="heart"
+              size={25}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="History"
+        component={OrderHistoryScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <CustomIcon
+              Type={2}
+              name="bell"
+              size={25}
+              color={
+                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
+              }
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -42,5 +98,11 @@ const styles = StyleSheet.create({
     elevation: 0,
     borderTopColor: 'transparent',
   },
-  BlurViewStyle: {},
+  BlurViewStyle: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+  },
 });
