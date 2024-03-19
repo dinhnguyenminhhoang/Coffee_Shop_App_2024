@@ -75,15 +75,15 @@ interface FontFamily {
 }
 
 export const FONTFAMILY: FontFamily = {
-  poppins_black: 'Poppins-Black',
-  poppins_bold: 'Poppins-Bold',
-  poppins_extrabold: 'Poppins-ExtraBold',
-  poppins_extralight: 'Poppins-ExtraLight',
-  poppins_light: 'Poppins-Light',
-  poppins_medium: 'Poppins-Medium',
-  poppins_regular: 'Poppins-Regular',
-  poppins_semibold: 'Poppins-SemiBold',
-  poppins_thin: 'Poppins-Thin',
+  poppins_black: 'Poppins_Black',
+  poppins_bold: 'Poppins_Bold',
+  poppins_extrabold: 'Poppins_ExtraBold',
+  poppins_extralight: 'Poppins_ExtraLight',
+  poppins_light: 'Poppins_Light',
+  poppins_medium: 'Poppins_Medium',
+  poppins_regular: 'Poppins_Regular',
+  poppins_semibold: 'Poppins_SemiBold',
+  poppins_thin: 'Poppins_Thin',
 };
 
 interface FontSize {
